@@ -1,9 +1,5 @@
-import {
-  ADD_PRODUCT,
-  REMOVE_QUANTITY,
-  ADD_QUANTITY,
-} from "./actionTypes.js";
-import initialState from "./intialState.js";
+import { ADD_PRODUCT, REMOVE_QUANTITY, ADD_QUANTITY } from "./actionTypes.js";
+import initialState from "./initialState.js";
 
 const nextId = (items) => {
   return items.reduce((id, item) => Math.max(id, item.id), -1) + 1;
@@ -23,27 +19,25 @@ const productReducer = (state = initialState, action) => {
       ];
 
     case ADD_QUANTITY:
-      return state.map((product) =>
-        product.id === action.payload.productId
-          ? {
-              ...product,
-              quantity:
-                product.quantity +
-                Number(action.payload.quantity),
-            }
-          : product // ⭐ สำคัญมาก
+      return state.map(
+        (product) =>
+          product.id === action.payload.productId
+            ? {
+                ...product,
+                quantity: product.quantity + Number(action.payload.quantity),
+              }
+            : product, // ⭐ สำคัญมาก
       );
 
     case REMOVE_QUANTITY:
       return state.map((product) =>
-        product.id === action.payload.productId
+        product.id === action.payload // action.payload คือ productId ที่ส่งมา
           ? {
               ...product,
-              quantity:
-                product.quantity -
-                Number(action.payload.quantity),
+              // ลดลงทีละ 1 ชิ้นตรงๆ เลยครับ
+              quantity: product.quantity > 0 ? product.quantity - 1 : 0,
             }
-          : product // ⭐ สำคัญมาก
+          : product,
       );
 
     default:

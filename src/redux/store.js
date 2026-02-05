@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import pageReducer from "./pages/pagereRucer";
-import { Provider } from "react-redux";
-import productReducer from "./products/productReducer.js";
+import pageReducer from "./pages/pageReducer";
+import productReducer from "./products/productReducer";
+import cartReducer from "./carts/cartReducer";
 
 export const store = configureStore({
-    reducer:{
-        pages : pageReducer,
-        products : productReducer
-    },
-    devTools: true
-})
+  reducer: {
+    pages: pageReducer,
+    products: productReducer,
+    carts: cartReducer,
+  },
+  devTools: true,
+});

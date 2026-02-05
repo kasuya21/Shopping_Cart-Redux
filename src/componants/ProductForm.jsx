@@ -5,11 +5,11 @@ import { useForm } from "react-hook-form";
 
 const ProductForm = () => {
   const dispatch = useDispatch();
-  const { 
-    register, 
-    handleSubmit, 
-    reset, 
-    formState: { errors } ,
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
@@ -17,7 +17,7 @@ const ProductForm = () => {
       imageUrl: "",
       price: "",
       quantity: "",
-    }
+    },
   });
 
   const onSubmit = (data) => {
@@ -41,9 +41,13 @@ const ProductForm = () => {
             <input
               type="text"
               {...register("name", { required: true })}
-              className={`w-full bg-gray-50 border ${errors.name ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
+              className={`w-full bg-gray-50 border ${errors.name ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
             />
-            {errors.name && <span className="text-red-500 text-xs">This field is required</span>}
+            {errors.name && (
+              <span className="text-red-500 text-xs">
+                This field is required
+              </span>
+            )}
           </div>
 
           {/* Category */}
@@ -53,14 +57,18 @@ const ProductForm = () => {
             </label>
             <select
               {...register("category", { required: true })}
-              className={`w-full bg-gray-50 border ${errors.category ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
+              className={`w-full bg-gray-50 border ${errors.category ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
             >
               <option value="">Select a category</option>
               <option value="electronics">Electronics</option>
               <option value="gadgets">Gadgets</option>
               <option value="accessories">Accessories</option>
             </select>
-            {errors.category && <span className="text-red-500 text-xs">Please select a category</span>}
+            {errors.category && (
+              <span className="text-red-500 text-xs">
+                Please select a category
+              </span>
+            )}
           </div>
 
           {/* Image URL */}
@@ -71,21 +79,25 @@ const ProductForm = () => {
             <input
               type="text"
               {...register("imageUrl", { required: true })}
-              className={`w-full bg-gray-50 border ${errors.imageUrl ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
+              className={`w-full bg-gray-50 border ${errors.imageUrl ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
             />
-            {errors.imageUrl && <span className="text-red-500 text-xs">Image URL is required</span>}
+            {errors.imageUrl && (
+              <span className="text-red-500 text-xs">
+                Image URL is required
+              </span>
+            )}
           </div>
 
           {/* Price & Quantity Row */}
           <div className="flex gap-4">
-            <div className="flex-1">
+            <div className="flex-1 ">
               <label className="block text-gray-700 text-sm font-medium mb-1">
                 Price
               </label>
               <input
                 type="number"
                 {...register("price", { required: true, min: 1 })}
-                className={`w-full bg-gray-50 border ${errors.price ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
+                className={`w-full bg-gray-50 border ${errors.price ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
               />
             </div>
             <div className="flex-1">
@@ -95,7 +107,7 @@ const ProductForm = () => {
               <input
                 type="number"
                 {...register("quantity", { required: true, min: 1 })}
-                className={`w-full bg-gray-50 border ${errors.quantity ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
+                className={`w-full bg-gray-50 border ${errors.quantity ? "border-red-500" : "border-gray-300"} text-gray-900 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`}
               />
             </div>
           </div>

@@ -5,7 +5,7 @@ const initialState = [
         category: "Electronics",
         imageUrl: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop",
         price: 1999,
-        quantity: 300,
+        quantity: 20,
     },
     {
         id: 2,
